@@ -26,14 +26,18 @@ Vue.component('side-nav', SideNav);
 Vue.component('footer-nav', FooterNav);
 
 const globalEle = new Vue({
-  data: { $isEle: false } // 是否 ele 用户
+  data: {
+    $isEle: false
+  } // 是否 ele 用户
 });
 
 Vue.mixin({
   computed: {
     $isEle: {
       get: () => (globalEle.$data.$isEle),
-      set: (data) => {globalEle.$data.$isEle = data;}
+      set: (data) => {
+        globalEle.$data.$isEle = data;
+      }
     }
   }
 });
@@ -59,8 +63,8 @@ router.afterEach(route => {
       return;
     }
   }
+
   document.title = 'Element';
-  ga('send', 'event', 'PageView', route.name);
 });
 
 new Vue({ // eslint-disable-line
